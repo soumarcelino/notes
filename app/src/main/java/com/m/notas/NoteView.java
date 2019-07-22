@@ -33,6 +33,7 @@ public class NoteView extends AppCompatActivity {
         getWindow().setExitTransition(new Fade());
         getWindow().setEnterTransition(new Fade());
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_note_view);
 
         TextView noteTitle = findViewById(R.id.noteViewTitle);

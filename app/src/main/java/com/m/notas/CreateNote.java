@@ -21,6 +21,7 @@ public class CreateNote extends AppCompatActivity {
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         getWindow().setExitTransition(new Fade());
         getWindow().setEnterTransition(new Fade());
+        setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_create_note);
 
         Button create = findViewById(R.id.editConfirmButton);

@@ -25,6 +25,7 @@ public class NoteEdit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_edit_note);
 
         Bundle extras = getIntent().getExtras();
