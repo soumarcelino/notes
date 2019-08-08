@@ -1,13 +1,13 @@
 package com.m.notas;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.transition.Fade;
 import android.view.View;
@@ -19,13 +19,16 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.m.notas.adapters.NoteAdapter;
 import com.m.notas.models.Note;
+import com.m.notas.models.NoteViewModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NoteAdapter.OnNoteListener {
 
     private ArrayList<Note> notes = new ArrayList<>();
     private NoteAdapter noteAdapter;
+    private NoteViewModel noteViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,16 +43,32 @@ public class MainActivity extends AppCompatActivity implements NoteAdapter.OnNot
         recyclerViewNotes.setLayoutManager(new LinearLayoutManager(this));
         noteAdapter = new NoteAdapter(this, notes, this);
         recyclerViewNotes.setAdapter(noteAdapter);
+        
+        noteViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
+
+        noteViewModel.getAllNotes().observe(this, new Observer<List<Note>>() {
+            @Override
+            public void onChanged(List<Note> notes) {
+                updateNotes(notes);
+            }
+        });
 
         FloatingActionButton createNoteFab = findViewById(R.id.createNoteFab);
         createNoteFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, CreateNote.class);
-                startActivityForResult(intent,201, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
+                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
             }
         });
 
+    }
+
+    public void updateNotes(List<Note> mNotes){
+        notes.clear();
+        notes.addAll(mNotes);
+        noteAdapter.notifyDataSetChanged();
+        checkNotesIsEmptyAndUpdateAlert();
     }
 
     public void checkNotesIsEmptyAndUpdateAlert(){
@@ -57,46 +76,6 @@ public class MainActivity extends AppCompatActivity implements NoteAdapter.OnNot
             shouldShowEmptyNote(false);
         } else {
             shouldShowEmptyNote(true);
-        }
-    }
-
-    public void createNote(String title, String body){
-        Note note = new Note(title, body);
-        notes.add(note);
-        noteAdapter.notifyDataSetChanged();
-        checkNotesIsEmptyAndUpdateAlert();
-    }
-
-    public void updateNote(Note note, int id){
-        notes.set(id, note);
-        noteAdapter.notifyDataSetChanged();
-    }
-
-    public void removeNote(int id){
-        notes.remove(id);
-        noteAdapter.notifyDataSetChanged();
-        checkNotesIsEmptyAndUpdateAlert();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        System.out.println("New param "+requestCode+" - "+resultCode);
-        if(resultCode == 201){
-            String title = data.getStringExtra("title");
-            String body = data.getStringExtra("body");
-            createNote(title, body);
-        } else if(resultCode == 204){
-            if(data.hasExtra("id")){
-                int id = data.getIntExtra("id", 0);
-                removeNote(id);
-            }
-        } else if(resultCode == 205){
-            String title = data.getStringExtra("title");
-            String body = data.getStringExtra("body");
-            int id = data.getIntExtra("id",0);
-            Note note = new Note(title, body);
-            updateNote(note, id);
         }
     }
 
@@ -112,18 +91,15 @@ public class MainActivity extends AppCompatActivity implements NoteAdapter.OnNot
         }
     }
 
-    public void openNoteView(Note note, int id){
+    public void openNoteView(Note note){
         Intent intent = new Intent(this, NoteView.class);
-        intent.putExtra("title", note.getName());
-        intent.putExtra("body", note.getDescription());
-        intent.putExtra("id", id);
-        startActivityForResult(intent,204, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+        intent.putExtra("note", note);
+        startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
 
     @Override
     public void onNoteClick(int position) {
-        Intent intent = new Intent(this, NoteView.class);
         Note note = notes.get(position);
-        openNoteView(note, position);
+        openNoteView(note);
     }
 }

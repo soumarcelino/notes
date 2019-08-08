@@ -41,7 +41,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         holder.noteDesc.setText(note.getDescription());
         String hash = Text.MD5(note.getName().toLowerCase());
         Ion.with(layoutInflater.getContext())
-                .load("https://www.gravatar.com/monsterid/"+hash)
+                .load("https://www.gravatar.com/monsterid/"+hash+"?s=500")
                 .withBitmap()
                 .intoImageView(holder.gravatar);
     }

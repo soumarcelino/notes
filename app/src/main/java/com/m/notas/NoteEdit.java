@@ -1,6 +1,7 @@
 package com.m.notas;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,13 +13,15 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.koushikdutta.ion.Ion;
+import com.m.notas.models.Note;
+import com.m.notas.models.NoteViewModel;
 import com.m.notas.utils.Text;
 
 public class NoteEdit extends AppCompatActivity {
-    private String title, body;
-    private int id;
+    private Note note;
     private TextView noteTitle;
     private TextView noteBody;
+    private NoteViewModel noteViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,15 +31,15 @@ public class NoteEdit extends AppCompatActivity {
         setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_edit_note);
 
+        noteViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
+
         Bundle extras = getIntent().getExtras();
         noteTitle = findViewById(R.id.editNoteTitle);
         noteBody = findViewById(R.id.editNoteBody);
         if( extras != null){
-            title = extras.getString("title");
-            body = extras.getString("body");
-            id = extras.getInt("id");
-            noteTitle.setText(title);
-            noteBody.setText(body);
+            note = (Note) extras.getSerializable("note");
+            noteTitle.setText(note.getName());
+            noteBody.setText(note.getDescription());
         }
         Button editConfirm = findViewById(R.id.editConfirmButton);
         editConfirm.setOnClickListener(new View.OnClickListener() {
@@ -54,11 +57,9 @@ public class NoteEdit extends AppCompatActivity {
         });
     }
     private void confirmEdit(){
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("title", noteTitle.getText().toString());
-        intent.putExtra("body", noteBody.getText().toString());
-        intent.putExtra("id", id);
-        setResult(205, intent);
+        note.setName(noteTitle.getText().toString());
+        note.setDescription(noteBody.getText().toString());
+        noteViewModel.update(note);
         finish();
     }
 }

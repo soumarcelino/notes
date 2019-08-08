@@ -1,17 +1,24 @@
 package com.m.notas.models;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Note {
+@Entity(tableName = "Notes")
+public class Note implements Serializable {
+    @PrimaryKey(autoGenerate = true)
+    private Integer id;
+    @ColumnInfo(name = "name")
     private String name;
+    @ColumnInfo(name = "description")
     private String description;
-    private Date creationDate;
-    private Date lastUpdate;
     public Note(String name, String description){
         this.name = name;
         this.description = description;
-        this.creationDate = Calendar.getInstance().getTime();
     }
 
     public String getName() {
@@ -28,5 +35,13 @@ public class Note {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

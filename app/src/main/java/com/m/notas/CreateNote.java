@@ -1,6 +1,7 @@
 package com.m.notas;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +12,13 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.m.notas.models.Note;
+import com.m.notas.models.NoteViewModel;
+
 public class CreateNote extends AppCompatActivity {
+
+    private NoteViewModel noteViewModel;
+    private Note note;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,21 +31,20 @@ public class CreateNote extends AppCompatActivity {
         setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_create_note);
 
+        noteViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
+
         Button create = findViewById(R.id.editConfirmButton);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 TextView title = findViewById(R.id.editNoteTitle);
                 TextView body = findViewById(R.id.editNoteBody);
-
-                Intent intent = new Intent(CreateNote.this, MainActivity.class);
-                intent.putExtra("title", title.getText().toString());
-                intent.putExtra("body", body.getText().toString());
-                setResult(201, intent);
+                note = new Note(title.getText().toString(), body.getText().toString());
+                noteViewModel.insert(note);
                 finishAfterTransition();
-
             }
         });
+
         Button cancel = findViewById(R.id.editCancelButton);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
