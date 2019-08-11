@@ -14,4 +14,11 @@ public class Text {
         }
         return null;
     }
+
+    public static String truncateText(String text, int size){
+        if(text.length() > size){
+            return text.substring(0, size) + " ...";
+        }
+        return text;
+    }
 }

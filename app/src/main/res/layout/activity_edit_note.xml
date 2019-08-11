@@ -47,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/app.input.title"
+            android:singleLine="true"
             android:textColorHighlight="#464646"
             android:textColorLink="#464646" />
     </com.google.android.material.textfield.TextInputLayout>

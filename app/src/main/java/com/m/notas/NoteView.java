@@ -1,15 +1,12 @@
 package com.m.notas;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.transition.Fade;
 import android.view.View;
@@ -22,6 +19,7 @@ import android.widget.TextView;
 import com.koushikdutta.ion.Ion;
 import com.m.notas.models.Note;
 import com.m.notas.models.NoteViewModel;
+import com.m.notas.utils.DateUtils;
 import com.m.notas.utils.Text;
 
 public class NoteView extends AppCompatActivity {
@@ -42,6 +40,8 @@ public class NoteView extends AppCompatActivity {
 
         TextView noteTitle = findViewById(R.id.noteViewTitle);
         TextView noteBody = findViewById(R.id.noteTitleViewBody);
+        TextView noteDate = findViewById(R.id.noteViewDate);
+
         ImageView noteViewGravatar = findViewById(R.id.noteViewGravatar);
 
         Bundle extras = getIntent().getExtras();
@@ -49,6 +49,9 @@ public class NoteView extends AppCompatActivity {
             note = (Note) extras.getSerializable("note");
             noteTitle.setText(note.getName());
             noteBody.setText(note.getDescription());
+
+            noteDate.setText(DateUtils.toString(note.getCreateDate()));
+
             String hash = Text.MD5(note.getName().toLowerCase());
             Ion.with(this)
                     .load("https://www.gravatar.com/monsterid/"+hash+"?s=500")
@@ -91,6 +94,5 @@ public class NoteView extends AppCompatActivity {
     private void deleteNote(){
         noteViewModel.delete(note);
         finishAfterTransition();
-
     }
 }

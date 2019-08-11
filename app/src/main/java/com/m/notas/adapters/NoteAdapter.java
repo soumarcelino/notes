@@ -16,6 +16,8 @@ import com.m.notas.utils.Text;
 
 import java.util.List;
 
+import static com.m.notas.utils.Text.truncateText;
+
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     private List<Note> notes;
     private LayoutInflater layoutInflater;
@@ -37,8 +39,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Note note = notes.get(position);
-        holder.noteName.setText(note.getName());
-        holder.noteDesc.setText(note.getDescription());
+        holder.noteName.setText(truncateText(note.getName(), 30));
+        holder.noteDesc.setText(truncateText(note.getDescription(), 40));
         String hash = Text.MD5(note.getName().toLowerCase());
         Ion.with(layoutInflater.getContext())
                 .load("https://www.gravatar.com/monsterid/"+hash+"?s=500")
