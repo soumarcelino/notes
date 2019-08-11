@@ -44,7 +44,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/open_sans_light"
-        android:text="Minhas notas"
+        android:text="@string/app.list.title"
         android:textSize="36dp"
         app:layout_constraintStart_toEndOf="@+id/appIcon2"
         app:layout_constraintTop_toTopOf="parent" />
@@ -82,7 +82,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/open_sans"
-        android:text="Não há notas"
+        android:text="@string/app.list.empty"
         app:layout_constraintEnd_toEndOf="@+id/RecyclerViewNotes"
         app:layout_constraintStart_toStartOf="@+id/RecyclerViewNotes"
         app:layout_constraintTop_toBottomOf="@+id/emptyNoteImage" />

@@ -61,14 +61,14 @@ public class NoteView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 new AlertDialog.Builder(NoteView.this)
-                        .setTitle("Remoção de nota")
-                        .setMessage("Tens certeza que deseja apagar a nota?")
-                        .setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                        .setTitle(R.string.app_alert_remove_title)
+                        .setMessage(R.string.app_alert_remove_body)
+                        .setPositiveButton(R.string.app_alert_yes, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 deleteNote();
                             }
-                        }).setNegativeButton("NÃO", null).show();
+                        }).setNegativeButton(R.string.app_alert_no, null).show();
             }
         });
 
