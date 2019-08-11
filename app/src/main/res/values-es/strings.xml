@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Notas</string>
+    <string name="app.list.title">Mis notas</string>
+    <string name="app.list.empty">"No hay notas "</string>
+    <string name="app.create.title">Compositor</string>
+    <string name="app.input.title">Título de tu nota</string>
+    <string name="app.input.description">¿Qué estás pensando?</string>
+    <string name="app.confirm">Confirmar</string>
+    <string name="app.cancel">Cancelar</string>
+    <string name="app.view.title">Visor de notas</string>
+    <string name="app.button.edit">Editar</string>
+    <string name="app.button.delete">Borrar</string>
+    <string name="app.alert.remove.title">Eliminación de nota</string>
+    <string name="app.alert.remove.body">"¿Estás seguro de que quieres eliminar la nota? "</string>
+    <string name="app.alert.yes">Si</string>
+    <string name="app.alert.no">No</string>
+    <string name="app.note.editor.title">Editor de nota</string>
+</resources>

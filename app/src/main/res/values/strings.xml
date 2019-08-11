@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">Notas</string>
+    <string name="app_name">Notes</string>
+    <string name="app.list.title">My notes</string>
+    <string name="app.list.empty">There are no notes</string>
+    <string name="app.create.title">Composer</string>
+    <string name="app.input.title">Title of your note</string>
+    <string name="app.input.description">What are you thinking?</string>
+    <string name="app.confirm">Confirm</string>
+    <string name="app.cancel">Cancel</string>
+    <string name="app.view.title">Note viewer</string>
+    <string name="app.button.edit">Edit</string>
+    <string name="app.button.delete">Delete</string>
+    <string name="app.alert.remove.title">Note Removal</string>
+    <string name="app.alert.remove.body">Are you sure you want to delete this note?</string>
+    <string name="app.alert.yes">Yes</string>
+    <string name="app.alert.no">No</string>
+    <string name="app.note.editor.title">Note Editor</string>
 </resources>
