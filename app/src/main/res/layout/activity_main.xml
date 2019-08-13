@@ -18,7 +18,7 @@
         android:layout_width="49dp"
         android:layout_height="54dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toStartOf="@+id/appNoteViewTitle"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,9 +32,11 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:clickable="true"
-        app:backgroundTint="#EBEBEB"
+        android:tint="#FFFFFF"
+        app:backgroundTint="#464646"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="#00000000"
         app:srcCompat="@drawable/baseline_add_black_48dp" />
 
     <TextView
@@ -42,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/open_sans_light"
         android:text="@string/app.list.title"
         android:textSize="36dp"
@@ -53,11 +55,11 @@
         android:id="@+id/RecyclerViewNotes"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app.title" >
+        app:layout_constraintTop_toBottomOf="@+id/app.title">
 
     </androidx.recyclerview.widget.RecyclerView>
 

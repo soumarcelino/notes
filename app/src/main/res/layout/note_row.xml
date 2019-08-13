@@ -12,34 +12,41 @@
         android:id="@+id/noteName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
-        android:fontFamily="@font/open_sans"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/roboto"
         android:text="Comprar pão na padaria"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/noteDesc"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/gravatar"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/noteDesc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:fontFamily="@font/open_sans_light"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/open_sans"
         android:text="4 reais de pão massa fina"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/noteName"
         app:layout_constraintTop_toBottomOf="@+id/noteName" />
 
-    <ImageView
-        android:id="@+id/gravatar"
-        android:layout_width="38dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
+    <TextView
+        android:id="@+id/noteListDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/open_sans_light"
+        android:text="Hoje, 10:15"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noteDesc" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

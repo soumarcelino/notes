@@ -1,5 +1,6 @@
 package com.m.notas;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
@@ -25,6 +26,8 @@ import com.m.notas.utils.Text;
 public class NoteView extends AppCompatActivity {
     private Note note;
     private NoteViewModel noteViewModel;
+    private static final int EDIT_REQUEST_CODE = 200;
+    public static final int EDIT_RESULT_CODE = 2001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,13 +89,20 @@ public class NoteView extends AppCompatActivity {
     }
     private void editNote(){
         Intent intent = new Intent(this, NoteEdit.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("note", note);
-        startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
-        finish();
-    }
+        startActivityForResult(intent, EDIT_REQUEST_CODE, ActivityOptions.makeSceneTransitionAnimation(this).toBundle()); }
 
     private void deleteNote(){
         noteViewModel.delete(note);
         finishAfterTransition();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == EDIT_RESULT_CODE){
+            finish();
+        }
     }
 }

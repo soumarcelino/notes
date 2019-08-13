@@ -1,8 +1,10 @@
 package com.m.notas;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,7 +45,12 @@ public class MainActivity extends AppCompatActivity implements NoteAdapter.OnNot
         recyclerViewNotes.setLayoutManager(new LinearLayoutManager(this));
         noteAdapter = new NoteAdapter(this, notes, this);
         recyclerViewNotes.setAdapter(noteAdapter);
-        
+
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.divider));
+
+        recyclerViewNotes.addItemDecoration(itemDecorator);
+
         noteViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
 
         noteViewModel.getAllNotes().observe(this, new Observer<List<Note>>() {

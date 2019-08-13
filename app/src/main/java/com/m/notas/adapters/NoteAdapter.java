@@ -4,19 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.koushikdutta.ion.Ion;
 import com.m.notas.models.Note;
 import com.m.notas.R;
-import com.m.notas.utils.Text;
-
 import java.util.List;
 
-import static com.m.notas.utils.Text.truncateText;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     private List<Note> notes;
@@ -39,13 +34,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Note note = notes.get(position);
-        holder.noteName.setText(truncateText(note.getName(), 30));
-        holder.noteDesc.setText(truncateText(note.getDescription(), 40));
-        String hash = Text.MD5(note.getName().toLowerCase());
-        Ion.with(layoutInflater.getContext())
-                .load("https://www.gravatar.com/monsterid/"+hash+"?s=500")
-                .withBitmap()
-                .intoImageView(holder.gravatar);
+        holder.noteName.setText(note.getName());
+        holder.noteDesc.setText(note.getDescription());
     }
 
     @Override
@@ -56,14 +46,12 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView noteName;
         TextView noteDesc;
-        ImageView gravatar;
         OnNoteListener onNoteListener;
 
         ViewHolder(final View itemView, OnNoteListener onNoteListener){
             super(itemView);
             noteName = itemView.findViewById(R.id.noteName);
             noteDesc = itemView.findViewById(R.id.noteDesc);
-            gravatar = itemView.findViewById(R.id.gravatar);
 
             this.onNoteListener = onNoteListener;
             itemView.setOnClickListener(this);

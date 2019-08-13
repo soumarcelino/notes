@@ -60,6 +60,7 @@ public class NoteEdit extends AppCompatActivity {
         note.setName(noteTitle.getText().toString());
         note.setDescription(noteBody.getText().toString());
         noteViewModel.update(note);
+        setResult(NoteView.EDIT_RESULT_CODE);
         finish();
     }
 }
