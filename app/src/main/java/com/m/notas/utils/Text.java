@@ -1,5 +1,7 @@
 package com.m.notas.utils;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Text {
     public static String MD5(String md5) {
         try {
@@ -15,10 +17,7 @@ public class Text {
         return null;
     }
 
-    public static String truncateText(String text, int size){
-        if(text.length() > size){
-            return text.substring(0, size) + " ...";
-        }
-        return text;
+    public static String normalize(String text){
+        return StringUtils.capitalize(text).trim();
     }
 }
