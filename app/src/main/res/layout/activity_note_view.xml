@@ -14,6 +14,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="17dp"
         android:background="#464646"
+        android:fontFamily="@font/open_sans_semibold"
         android:minWidth="150dp"
         android:text="@string/app.button.delete"
         android:textColor="#FFFFFF"
@@ -29,6 +30,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="17dp"
         android:background="@android:color/white"
+        android:fontFamily="@font/open_sans_semibold"
         android:minWidth="150dp"
         android:text="@string/app.button.edit"
         android:textColor="#6F6F6F"
@@ -42,9 +44,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/open_sans_light"
+        android:fontFamily="@font/roboto_medium"
         android:text="@string/app.view.title"
-        android:textSize="36dp"
+        android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/appIcon"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,7 +60,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars[0]" />
+        android:scaleType="fitXY" />
 
     <TextView
         android:id="@+id/noteTitleViewBody"
@@ -66,8 +68,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
-        android:fontFamily="@font/open_sans_light"
+        android:fontFamily="@font/open_sans"
         android:text="Ir na padaria já"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/noteViewTitle"
         app:layout_constraintTop_toBottomOf="@+id/noteViewTitle" />
@@ -79,8 +82,9 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="24dp"
-        android:fontFamily="@font/open_sans"
+        android:fontFamily="@font/roboto"
         android:text="Comprar pão na padaria"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/noteViewGravatar" />
@@ -90,12 +94,13 @@
         android:layout_width="49dp"
         android:layout_height="54dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toStartOf="@+id/appNoteViewTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_pageview_black_48dp" />
+        app:srcCompat="@drawable/ic_twotone_event_note"
+        android:scaleType="fitXY" />
 
     <TextView
         android:id="@+id/noteViewDate"
@@ -103,9 +108,10 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
-        android:fontFamily="@font/open_sans_semibold"
+        android:fontFamily="@font/open_sans_light"
         android:text="20/05/1998 - 10:45"
         android:textColor="#737373"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/noteViewTitle"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

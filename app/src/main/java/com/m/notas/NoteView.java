@@ -23,6 +23,8 @@ import com.m.notas.models.NoteViewModel;
 import com.m.notas.utils.DateUtils;
 import com.m.notas.utils.Text;
 
+import static com.m.notas.utils.DateUtils.prettyTime;
+
 public class NoteView extends AppCompatActivity {
     private Note note;
     private NoteViewModel noteViewModel;
@@ -53,11 +55,11 @@ public class NoteView extends AppCompatActivity {
             noteTitle.setText(note.getName());
             noteBody.setText(note.getDescription());
 
-            noteDate.setText(DateUtils.toString(note.getCreateDate()));
+            noteDate.setText(prettyTime(note.getCreateDate()));
 
             String hash = Text.MD5(note.getName().toLowerCase());
             Ion.with(this)
-                    .load("https://www.gravatar.com/monsterid/"+hash+"?s=500")
+                    .load("https://api.adorable.io/avatars/300/"+hash)
                     .withBitmap()
                     .intoImageView(noteViewGravatar);
         }

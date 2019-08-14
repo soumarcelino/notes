@@ -12,6 +12,8 @@ import com.m.notas.models.Note;
 import com.m.notas.R;
 import java.util.List;
 
+import static com.m.notas.utils.DateUtils.prettyTime;
+
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     private List<Note> notes;
@@ -36,6 +38,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         Note note = notes.get(position);
         holder.noteName.setText(note.getName());
         holder.noteDesc.setText(note.getDescription());
+        holder.noteListData.setText(prettyTime(note.getCreateDate()));
     }
 
     @Override
@@ -46,12 +49,14 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView noteName;
         TextView noteDesc;
+        TextView noteListData;
         OnNoteListener onNoteListener;
 
         ViewHolder(final View itemView, OnNoteListener onNoteListener){
             super(itemView);
             noteName = itemView.findViewById(R.id.noteName);
             noteDesc = itemView.findViewById(R.id.noteDesc);
+            noteListData = itemView.findViewById(R.id.noteListDate);
 
             this.onNoteListener = onNoteListener;
             itemView.setOnClickListener(this);

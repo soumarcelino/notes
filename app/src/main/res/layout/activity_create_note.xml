@@ -10,11 +10,11 @@
         android:id="@+id/appEditNoteTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/open_sans_light"
+        android:fontFamily="@font/roboto_medium"
         android:text="@string/app.create.title"
-        android:textSize="36dp"
+        android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/appIcon4"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,12 +23,12 @@
         android:layout_width="49dp"
         android:layout_height="54dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toStartOf="@+id/appNoteViewTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_playlist_add_black_48dp" />
+        app:srcCompat="@drawable/ic_twotone_library_add" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayoutNoteName"
@@ -46,6 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/roboto"
             android:hint="@string/app.input.title"
             android:singleLine="true"
             android:textColorHighlight="#464646"
@@ -55,10 +56,13 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayoutForBody"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toTopOf="@+id/editConfirmButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputLayoutNoteName">
@@ -66,8 +70,10 @@
         <AutoCompleteTextView
             android:id="@+id/editNoteBody"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:fontFamily="@font/open_sans"
+            android:gravity="clip_vertical"
             android:hint="@string/app.input.description"
             android:maxHeight="300dp"
             android:textColor="#464646"
@@ -83,6 +89,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="17dp"
         android:background="#464646"
+        android:fontFamily="@font/open_sans_semibold"
         android:minWidth="150dp"
         android:text="@string/app.confirm"
         android:textColor="#FFFFFF"
@@ -98,6 +105,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="17dp"
         android:background="@android:color/white"
+        android:fontFamily="@font/open_sans_semibold"
         android:minWidth="150dp"
         android:text="@string/app.cancel"
         android:textColor="#6F6F6F"

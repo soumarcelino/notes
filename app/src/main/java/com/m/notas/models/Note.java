@@ -6,6 +6,7 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
+import com.m.notas.utils.Text;
 import com.m.notas.utils.TimestampConverter;
 
 import java.io.Serializable;
@@ -44,7 +45,7 @@ public class Note implements Serializable {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = Text.normalize(name);
     }
 
     public String getDescription() {
@@ -52,7 +53,7 @@ public class Note implements Serializable {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description = Text.normalize(description);
     }
 
     public Integer getId() {

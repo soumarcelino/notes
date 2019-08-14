@@ -21,9 +21,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toStartOf="@+id/appNoteViewTitle"
+        android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_notes_black_48dp" />
+        app:srcCompat="@drawable/ic_twotone_collections_bookmark" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/createNoteFab"
@@ -44,10 +45,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/open_sans_light"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto_medium"
         android:text="@string/app.list.title"
-        android:textSize="36dp"
+        android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/appIcon2"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,7 +56,7 @@
         android:id="@+id/RecyclerViewNotes"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,6 +72,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/RecyclerViewNotes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,8 +85,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:fontFamily="@font/open_sans"
+        android:fontFamily="@font/roboto"
         android:text="@string/app.list.empty"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/RecyclerViewNotes"
         app:layout_constraintStart_toStartOf="@+id/RecyclerViewNotes"
         app:layout_constraintTop_toBottomOf="@+id/emptyNoteImage" />
