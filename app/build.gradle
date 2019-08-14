@@ -23,6 +23,9 @@ dependencies {
     implementation "androidx.room:room-runtime:2.1.0"
     annotationProcessor "androidx.room:room-compiler:2.1.0"
 
+    implementation "org.ocpsoft.prettytime:prettytime:4.0.1.Final"
+    implementation "org.apache.commons:commons-lang3:3.6"
+
     implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.0.0"
 
