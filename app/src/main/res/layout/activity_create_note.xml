@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="16dp"gi
         android:fontFamily="@font/roboto_medium"
         android:text="@string/app.create.title"
         android:textSize="24sp"
@@ -28,7 +28,8 @@
         app:layout_constraintEnd_toStartOf="@+id/appNoteViewTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_twotone_library_add" />
+        app:srcCompat="@drawable/ic_twotone_library_add"
+        android:scaleType="fitXY" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayoutNoteName"
